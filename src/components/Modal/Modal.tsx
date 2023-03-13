@@ -15,9 +15,9 @@ export const Modal: FC<ModalInterface> = ({ children }) => {
 }
 
 const ModalComponent = styled.div`
-    width: 400px;
+    width: 450px;
     height: auto;
     border-radius: 15px;
     background: ${() => ThemeConfig.modalBackground};
-    padding: 20px;
+    padding: 50px;
 `;

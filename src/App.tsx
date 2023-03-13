@@ -1,5 +1,4 @@
 import { useRoutes } from "react-router-dom";
-
 import { Sign } from "./pages";
 
 function App() {

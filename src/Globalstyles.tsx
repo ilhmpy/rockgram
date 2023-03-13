@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
     * {
         box-sizing: border-box;
         color: ${() => ThemeConfig.defaultTextColor};
+        font-family: 'Germania One', cursive;
     }
     
     body {
@@ -16,6 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     h1, h2, h3 {
         padding: 0;
         margin: 0;
+        line-height: 0;
     }
 
     button {
@@ -27,7 +29,13 @@ export const GlobalStyles = createGlobalStyle`
     input {
         outline: none;
         border: 0;
-        background:
+        background: 0;
+        padding: 15px 15px;
+
+        &::-webkit-input-placeholder { 
+            color: #fff;
+            font-size: 15px; 
+        }
     }
 
     #root {
