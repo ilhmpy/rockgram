@@ -20,4 +20,8 @@ const ModalComponent = styled.div`
     border-radius: 15px;
     background: ${() => ThemeConfig.modalBackground};
     padding: 50px;
+    padding-bottom: 25px;
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
 `;

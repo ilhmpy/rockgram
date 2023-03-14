@@ -24,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
         outline: none;
         background: 0;
         border: 0;
+        cursor: pointer;
     }
 
     input {
