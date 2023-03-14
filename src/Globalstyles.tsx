@@ -33,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
         padding: 15px 15px;
 
         &::-webkit-input-placeholder { 
-            color: #fff;
+            color: ${() => ThemeConfig.defaultTextColor};
             font-size: 15px; 
         }
     }

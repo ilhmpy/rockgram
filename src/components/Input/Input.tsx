@@ -30,5 +30,5 @@ const InputComponent = styled.input`
     width: 92%;
     height: 50px;
     border-radius: 10px;
-    border: 2px solid #8D8DF5;
+    border: 2px solid #87CEEB;
 `;
