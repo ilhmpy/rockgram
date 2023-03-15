@@ -3,11 +3,15 @@ export const de = {
         SignPage: {
             welcomeText: "Registrierung/Schnellanmeldung",
             namePlaceholder: "Ihre Name",
-            nameButton: "Weiter"
+            nameButton: "Weiter",
+
+            passwordPlaceholder: "Ihre password",
+            passwordButton: "Los geht's"
         },
 
         ValidErrors: {
-            length: "Ihre Name muss mindestens 9 Zeichen lang sein."
+            length: "Ihre Name muss mindestens 9 Zeichen lang sein.",
+            password: "Ihre Password muss mindestens 10 Zeichen lang sein."
         }
     }
 };

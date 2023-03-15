@@ -7,6 +7,8 @@ interface InputInterface {
     setValue: (value: string) => void;
     value: string;
     maxLng: number;
+    comp: (value: string) => boolean;
+    errorComp: string;
 }
 
 interface Validation {
@@ -18,7 +20,9 @@ export const Input: FC<InputInterface> = ({
     phText,
     setValue,
     value,
-    maxLng
+    maxLng,
+    comp,
+    errorComp
 }) => {
     const defaultIsValidation: Validation = {
         reason: null,
@@ -30,9 +34,9 @@ export const Input: FC<InputInterface> = ({
    const onChangeHolder = (e: any) => {
        const value = e.target.value;
 
-       if (value.length < maxLng && value.length > 0) {
+       if (comp(value) && value.length > 0) {
             setIsValidation({
-                reason: t("ValidErrors.length"),
+                reason: t(`ValidErrors.${errorComp}`),
                 validation: false
             });
        } else {
