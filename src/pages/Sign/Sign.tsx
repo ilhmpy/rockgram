@@ -1,5 +1,6 @@
 import { ThemeConfig } from "../../configs/Theme.config"
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 import { Modal, FlexCenter, Input, Button } from "../../components"
 import { SignTitle } from "./Sign.styles";
@@ -21,13 +22,14 @@ export const Sign = () => {
     const [nameValue, setNameValue] = useState<string>("");
     const [passwordValue, setPasswordValue] = useState<string>("");
     const [wizordType, setWizordType] = useState<0 | 1>(0);
+    const navigation = useNavigate();
 
     const handleNextButton = () => {
         setWizordType(wizordType == 0 ? 1 : 0);
     };
 
     const handlePasswordButton = () => {
-        
+        return navigation("/profile");
     }
 
     return (

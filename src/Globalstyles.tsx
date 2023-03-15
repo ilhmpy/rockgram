@@ -12,6 +12,7 @@ export const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         height: 100vh;
+        background: ${() => ThemeConfig.mainBackground};
     }
 
     h1, h2, h3 {
