@@ -19,6 +19,7 @@ export const Navigation = ({ children }) => {
             <NavigationMenuLink to="/friends">{t("NavigationMenu.friends")}</NavigationMenuLink>
             <NavigationMenuLink to="/posts">{t("NavigationMenu.posts")}</NavigationMenuLink>
             <NavigationMenuLink to="/music">{t("NavigationMenu.music")}</NavigationMenuLink>
+            <NavigationMenuLink to="/settings">{t("NavigationMenu.settings")}</NavigationMenuLink>
         </NavigationMenu>
         <NavigationContentContainer>
             {children}
@@ -45,9 +46,9 @@ const NavigationContainer = styled.div`
 
 const NavigationMenu = styled.div`
     width: 13%;
-    height: 203px;
+    height: 253px;
     background: rgb(255, 250, 240);
-    margin-right: 50px;
+    margin-right: 20px;
     border-radius: 10px;
     border: 2px solid rgb(137, 207, 240);
     user-select: none;
@@ -73,5 +74,6 @@ const NavigationMenuItem = styled.a`
 
 const NavigationContentContainer = styled.div`
     padding: 20px;
+    padding-top: 0px;
     width: 100%;
 `;

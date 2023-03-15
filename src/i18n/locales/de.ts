@@ -13,7 +13,8 @@ export const de = {
             profile: "Benutzerprofil",
             friends: "Freunden",
             posts: "Beiträge",
-            music: "Musik"
+            music: "Musik",
+            settings: "Einstellungen"
         },
 
         ProfilePage: {
