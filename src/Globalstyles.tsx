@@ -13,6 +13,8 @@ export const GlobalStyles = createGlobalStyle`
         padding: 0;
         height: 100vh;
         background: ${() => ThemeConfig.mainBackground};
+        display: flex;
+        justify-content: center;
     }
 
     h1, h2, h3 {
