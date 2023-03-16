@@ -4,3 +4,4 @@ export { Input } from "./Input/Input";
 export { Button } from "./Button/Button";
 export { Navigation } from "./Navigation/Navigation";
 export { WhiteContainer } from "./WhiteContainer/WhiteContainer"
+export { Loader } from "./Loader/Loader";

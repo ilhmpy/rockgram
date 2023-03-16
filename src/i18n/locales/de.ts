@@ -18,7 +18,13 @@ export const de = {
         },
 
         ProfilePage: {
-
+            ProfileFields: {
+                years: "Jahre alt",
+                citizenship: "Staatgehörigkeit",
+                city: "Stadt",
+                aboutme: "Über mich",
+                genres: "Rock genres"
+            }
         },
 
         ValidErrors: {
