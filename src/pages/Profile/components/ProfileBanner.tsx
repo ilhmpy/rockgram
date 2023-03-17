@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { genresKind } from "../../../functions";
 
 type ProfileBannerType = {
-    user: User;
+    user: User | null;
 }
 
 interface ProfileFieldType {
