@@ -11,27 +11,38 @@ type LoadCircleItemType = {
 }
 
 export const Loader: FC<LoaderType>  = ({ children, isLoad }) => {
-    const [loadCircles, setLoadCircles] = useState([100, 100, 100, 100, 100, 30]);
-
-    /* setTimeout(() => {
-        setLoadCircles((state) => {
-            let newState: number[] = [];
-            const oldItem = state.find((item) => item == 30);
-
-            if (oldItem) {
-                const oldIndex = state.indexOf(oldItem);
-                let newIndex = 0;
-
-                for (let i = 0; newState.length < state.length; i++) {
-                    newState = [100, ...newState];
-                }
-            }
-
-            return newState;
-        })
-    }, 5000);*/
+    const [loadCircles, setLoadCircles] = useState<number[]>([30, 100, 100, 100, 100, 100]);
 
     if (isLoad) {
+        setTimeout(() => {
+            let oldIndex: number = 0;
+            let newCircles: number[] = [];
+
+            loadCircles.forEach((circle, idx) => {
+                if (circle == 30) {
+                    oldIndex = idx;
+                };
+            });
+
+            loadCircles.forEach((circle, idx) => {
+                if (oldIndex == loadCircles.length - 1) {
+                    if (idx == 0) {
+                        newCircles.push(30)
+                    } else {
+                        newCircles.push(100);
+                    }
+                } else {
+                    if (idx == oldIndex + 1) {
+                        newCircles.push(30);
+                    } else {
+                        newCircles.push(100);
+                    };
+                }
+            });
+
+            setLoadCircles(newCircles);
+        }, 120);
+
         return (
             <LoaderContainer>
                 <LoadCircle>
@@ -66,7 +77,6 @@ const LoadCircle = styled.div`
     height: 70px;
     border-radius: 50%;
     position: relative;
-    animation: 1s linear infinite spinner;
 
     @keyframes spinner {
         0% {
@@ -83,10 +93,9 @@ const LoadCircleItem = styled.div<LoadCircleItemType>`
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: rgb(137, 207, 240);
+    background: ${({ view }) => view == 30 ? "#1C3947" : "rgb(137, 207, 240)"};
     position: absolute;
     transition: 0.5s;
-    opacity: ${({ view }) => view}%;
 
     &:nth-child(1) {
         right: 25px;
@@ -99,22 +108,22 @@ const LoadCircleItem = styled.div<LoadCircleItemType>`
     }
 
     &:nth-child(3) {
-        top: 8px;
-        left: -6px;
-    }
-
-    &:nth-child(4) {
-        bottom: 8px;
-        left: -6px;
-    }
-
-    &:nth-child(5) {
         bottom: 8px;
         right: -6px;
     }
 
-    &:nth-child(6) {
+    &:nth-child(4) {
         bottom: -9px;
         left: 25px;
+    }
+
+    &:nth-child(5) {
+        bottom: 8px;
+        left: -6px;
+    }
+
+    &:nth-child(6) {
+        top: 8px;
+        left: -6px;
     }
 `
