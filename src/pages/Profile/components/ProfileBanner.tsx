@@ -1,11 +1,13 @@
-import { useContext, useState } from "react";
-import { useTranslation } from "react-i18next"
-import styled from "styled-components"
-import { WhiteContainer } from "../../components"
-import { Context } from "../../AppContext";
-import { Loader } from "../../components";
-import { RockGenres } from "../../types";
-import { genresKind } from "../../functions";
+import { User, RockGenres } from "../../../types"
+import { Loader, WhiteContainer } from "../../../components";
+import { FC, useState } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { genresKind } from "../../../functions";
+
+type ProfileBannerType = {
+    user: User;
+}
 
 interface ProfileFieldType {
     field: string;
@@ -20,47 +22,46 @@ type RockGenreType = {
     kind: number;
 }
 
-export const Profile = () => {
+export const ProfileBanner: FC<ProfileBannerType> = ({ user }) => {
     const { t } = useTranslation();
-    const { user } = useContext(Context);
     const [aboutMySelfHide, setAboutMySelfHide] = useState<boolean>(false);
     const [rockGenresHide, setRockGenresHide] = useState<boolean>(false);
 
     return (
         <Loader isLoad={user == null}>
-            <WhiteContainer>
-                <Flex>
-                    <ProfileAvatar></ProfileAvatar>
-                    <ProfileBlock>
-                        <ProfileName>{user?.name}</ProfileName>
-                        <ProfileFields>
-                            <ProfileField field={t("ProfilePage.ProfileFields.years")}>{user?.yearsOld}</ProfileField>
-                            <ProfileField field={t("ProfilePage.ProfileFields.citizenship")}>{user?.citizensheep}</ProfileField>
-                            <ProfileField field={t("ProfilePage.ProfileFields.city")}>{user?.city}</ProfileField>
-                        </ProfileFields>
-                        <ProfileDrop 
-                            isHide={aboutMySelfHide} 
-                            onClick={() => setAboutMySelfHide(!aboutMySelfHide)}
-                            field={t("ProfilePage.ProfileFields.aboutme")}
-                        >
-                            <div className="profilecontainer">{user?.aboutme}</div>
-                        </ProfileDrop>
-                        <ProfileDrop 
-                            isHide={rockGenresHide}
-                            onClick={() => setRockGenresHide(!rockGenresHide)} 
-                            field={t("ProfilePage.ProfileFields.genres")}
-                            heightCont={user?.rockGenres ?  user?.rockGenres.length * 20 : 'auto'}
-                        >
-                            <ProfileRockGenres>
-                                {user?.rockGenres.map((genr, idx) => (
-                                    <ProfileRockGenre key={idx} kind={genr}>{genresKind(genr)}</ProfileRockGenre>
-                                ))}
-                            </ProfileRockGenres>
-                        </ProfileDrop>
-                    </ProfileBlock>
-                </Flex>
-            </WhiteContainer>
-        </Loader>
+        <WhiteContainer>
+            <Flex>
+                <ProfileAvatar></ProfileAvatar>
+                <ProfileBlock>
+                    <ProfileName>{user?.name}</ProfileName>
+                    <ProfileFields>
+                        <ProfileField field={t("ProfilePage.ProfileFields.years")}>{user?.yearsOld}</ProfileField>
+                        <ProfileField field={t("ProfilePage.ProfileFields.citizenship")}>{user?.citizensheep}</ProfileField>
+                        <ProfileField field={t("ProfilePage.ProfileFields.city")}>{user?.city}</ProfileField>
+                    </ProfileFields>
+                    <ProfileDrop 
+                        isHide={aboutMySelfHide} 
+                        onClick={() => setAboutMySelfHide(!aboutMySelfHide)}
+                        field={t("ProfilePage.ProfileFields.aboutme")}
+                    >
+                        <div className="profilecontainer">{user?.aboutme}</div>
+                    </ProfileDrop>
+                    <ProfileDrop 
+                        isHide={rockGenresHide}
+                        onClick={() => setRockGenresHide(!rockGenresHide)} 
+                        field={t("ProfilePage.ProfileFields.genres")}
+                        heightCont={user?.rockGenres ?  user?.rockGenres.length * 20 : 'auto'}
+                    >
+                        <ProfileRockGenres>
+                            {user?.rockGenres.map((genr, idx) => (
+                                <ProfileRockGenre key={idx} kind={genr}>{genresKind(genr)}</ProfileRockGenre>
+                            ))}
+                        </ProfileRockGenres>
+                    </ProfileDrop>
+                </ProfileBlock>
+            </Flex>
+        </WhiteContainer>
+    </Loader>
     )
 }
 
